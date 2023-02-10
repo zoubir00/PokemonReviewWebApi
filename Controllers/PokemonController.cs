@@ -29,9 +29,9 @@ namespace PokemonReviewApp.Controllers
 
             return Ok(pokemons);
         }
-        [HttpGet]
+        [HttpGet("{pokeid}")]
         [ProducesResponseType(200, Type = typeof(Pokemon))]
-        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
         public IActionResult GetPokemon(int pokeid)
         {
             if (!_pokemonRepository.PokemonExists(pokeid))
@@ -44,9 +44,9 @@ namespace PokemonReviewApp.Controllers
             return Ok(pokemon);
         }
 
-        [HttpGet]
+        [HttpGet("{pokeId}")]
         [ProducesResponseType(200, Type = typeof(decimal))]
-        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
         public IActionResult GetPokemonRating(int pokeId)
         {
             if (!_pokemonRepository.PokemonExists(pokeId))
