@@ -12,6 +12,11 @@ namespace PokemonReviewApp.Repository
         {
             _context = context;
         }
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
+        }
         public Owner GetOwner(int ownerId)
         {
             return _context.Owners.Where(o=>o.Id==ownerId).FirstOrDefault();

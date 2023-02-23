@@ -16,7 +16,11 @@ namespace PokemonReviewApp.Repository
             _context = context;
             _mapper = mapper;
         }
-
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
+        }
         public Reviewer GetReviewer(int reviewerId)
         {
             return _context.Reviewers.Where(r => r.Id == reviewerId).Include(e => e.Reviews).FirstOrDefault();

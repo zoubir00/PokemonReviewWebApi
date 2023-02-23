@@ -16,6 +16,11 @@ namespace PokemonReviewApp.Repository
             _context = context;
             _mapper = mapper;
         }
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
+        }
         public bool CountryExists(int id)
         {
             return _context.Countries.Any(c => c.Id==id);
